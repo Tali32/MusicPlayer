@@ -141,37 +141,11 @@ namespace MyMood
             {
                 if (listBox1.SelectedIndex == 0)
                 {
-                    if (File.Exists(playlist.Playlist_[listBox1.Items.Count - 1].Path))
-                    {
-                        listBox1.SelectedIndex = listBox1.Items.Count - 1;
-                        wmp.URL = playlist.Playlist_[listBox1.SelectedIndex].Path;
-                        wmp.controls.play();
-                        audio_playing = true;
-                        myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"{AppDomain.CurrentDomain.BaseDirectory}resources\pause.png");
-                        label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
-                            playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Playing;
-                    }
-                    else
-                    {
-                        listBox1.SelectedIndex = listBox1.Items.Count - 1;
-                    }
+                    listBox1.SelectedIndex = listBox1.Items.Count - 1;
                 }
                 else
                 {
-                    if (File.Exists(playlist.Playlist_[listBox1.SelectedIndex - 1].Path))
-                    {
-                        listBox1.SelectedIndex = listBox1.SelectedIndex - 1;
-                        wmp.URL = playlist.Playlist_[listBox1.SelectedIndex].Path;
-                        wmp.controls.play();
-                        audio_playing = true;
-                        myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"{AppDomain.CurrentDomain.BaseDirectory}resources\pause.png");
-                        label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
-                            playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Playing;
-                    }
-                    else
-                    {
-                        listBox1.SelectedIndex = listBox1.SelectedIndex - 1;
-                    }
+                    listBox1.SelectedIndex = listBox1.SelectedIndex - 1;
                 }
             }
         }
@@ -185,37 +159,11 @@ namespace MyMood
             {
                 if (listBox1.SelectedIndex == listBox1.Items.Count - 1)
                 {
-                    if (File.Exists(playlist.Playlist_[0].Path))
-                    {
-                        listBox1.SelectedIndex = 0;
-                        wmp.URL = playlist.Playlist_[listBox1.SelectedIndex].Path;
-                        wmp.controls.play();
-                        audio_playing = true;
-                        myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"{AppDomain.CurrentDomain.BaseDirectory}resources\pause.png");
-                        label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
-                            playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Playing;
-                    }
-                    else
-                    {
-                        listBox1.SelectedIndex = 0;
-                    }
+                    listBox1.SelectedIndex = 0;
                 }
                 else
                 {
-                    if (File.Exists(playlist.Playlist_[listBox1.SelectedIndex + 1].Path))
-                    {
-                        listBox1.SelectedIndex = listBox1.SelectedIndex + 1;
-                        wmp.URL = playlist.Playlist_[listBox1.SelectedIndex].Path;
-                        wmp.controls.play();
-                        audio_playing = true;
-                        myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"{AppDomain.CurrentDomain.BaseDirectory}resources\pause.png");
-                        label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
-                            playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Playing;
-                    }
-                    else
-                    {
-                        listBox1.SelectedIndex = listBox1.SelectedIndex + 1;
-                    }
+                    listBox1.SelectedIndex = listBox1.SelectedIndex + 1;
                 }
             }
         }
@@ -387,62 +335,11 @@ namespace MyMood
                 {
                     if (listBox1.SelectedIndex == listBox1.Items.Count - 1)
                     {
-                        if (File.Exists(playlist.Playlist_[0].Path))
-                        {
-                            listBox1.SelectedIndex = 0;
-                        }
-                        else
-                        {
-                            listBox1.SelectedIndex = 0;
-                        }
+                        listBox1.SelectedIndex = 0;
                     }
                     else
                     {
-                        if (File.Exists(playlist.Playlist_[listBox1.SelectedIndex + 1].Path))
-                        {
-                            listBox1.SelectedIndex = listBox1.SelectedIndex + 1;
-                            wmp.URL = playlist.Playlist_[listBox1.SelectedIndex].Path;
-                            wmp.controls.play();
-                            audio_playing = true;
-                            label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
-                                playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Playing;
-                        }
-                        else
-                        {
-                            MessageBox.Show(Localization.Wrong_path_text, Localization.Wrong_path_title,
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                            playlist.Playlist_.RemoveAt(listBox1.SelectedIndex + 1);
-
-                            if (playlist.Playlist_.Count != 0)
-                            {
-                                if (Directory.Exists($"{AppDomain.CurrentDomain.BaseDirectory}Playlists"))
-                                {
-                                    BinaryFormatter formatter = new BinaryFormatter();
-                                    using (FileStream file = new FileStream($"Playlists\\{playlist.Name}.dat", FileMode.OpenOrCreate))
-                                    {
-                                        formatter.Serialize(file, playlist);
-                                    }
-                                }
-                                else
-                                {
-                                    Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}Playlists");
-                                    BinaryFormatter formatter = new BinaryFormatter();
-                                    using (FileStream file = new FileStream($"Playlists\\{playlist.Name}.dat", FileMode.OpenOrCreate))
-                                    {
-                                        formatter.Serialize(file, playlist);
-                                    }
-                                }
-                            }
-
-                            listBox1.Items.Clear();
-                            int i = 1;
-                            foreach (MyAudio elem in playlist.Playlist_)
-                            {
-                                listBox1.Items.Add(i + ". " + elem.Name + " - " + elem.Group + "  " + elem.Style + $" ({elem.Path})");
-                                i++;
-                            }
-                        }
+                        listBox1.SelectedIndex = listBox1.SelectedIndex + 1;
                     }
                 }
             }
