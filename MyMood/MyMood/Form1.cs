@@ -64,7 +64,7 @@ namespace MyMood
                 wmp.URL = playlist.Playlist_[listBox1.SelectedIndex].Path;
                 timer1.Enabled = true;
                 audio_playing = true;
-                myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"{AppDomain.CurrentDomain.BaseDirectory}resources\pause.png");
+                myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"..\..\resources\pause.png");
                 label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
                     playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Playing;
             }
@@ -117,7 +117,7 @@ namespace MyMood
                 {
                     wmp.controls.play();
                     audio_playing = true;
-                    myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"{AppDomain.CurrentDomain.BaseDirectory}resources\pause.png");
+                    myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"..\..\resources\pause.png");
                     label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
                         playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Playing;
                 }
@@ -125,7 +125,7 @@ namespace MyMood
                 {
                     wmp.controls.pause();
                     audio_playing = false;
-                    myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"{AppDomain.CurrentDomain.BaseDirectory}resources\play.png");
+                    myButton1.BackgroundImage = System.Drawing.Image.FromFile($@"..\..\resources\play.png");
                     label1.Text = playlist.Playlist_[listBox1.SelectedIndex].Name + " - " +
                         playlist.Playlist_[listBox1.SelectedIndex].Group + " - " + Localization.Pausing;
                 }
